@@ -1,0 +1,28 @@
+name: CI
+
+on: 
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '2.2.x'
+    - name: Dotnet Publish
+      run: dotnet publish -c Release -o deploy
+    - name: Copy single file to remote
+      uses: garygrossgarten/github-action-scp@v0.7.1
+      with:
+        local: /home/runner/work/WebAppCICD/WebAppCICD/deploy/
+        remote: ./
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.PASSWORD }}
