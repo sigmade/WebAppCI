@@ -23,7 +23,7 @@ jobs:
       uses: garygrossgarten/github-action-scp@v0.7.1
       with:
         local: /home/runner/work/WebAppCI/WebAppCI/deploy/
-        remote: /var/www/webappci
+        remote: /var/www/webappci/
         host: ${{ secrets.HOST }}
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.PASSWORD }}
