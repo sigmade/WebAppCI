@@ -30,7 +30,7 @@ jobs:
     - name: Run SSH command
       uses: garygrossgarten/github-action-ssh@v0.6.3
       with:
-        command: ls -l
+        command: cd /var/www/webappci; ls -l
         host: ${{ secrets.HOST }}
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.PASSWORD }}
