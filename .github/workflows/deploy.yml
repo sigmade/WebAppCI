@@ -28,9 +28,9 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.PASSWORD }}
     - name: Run SSH command
-      uses: fifsky/ssh-action@v0.0.4
+      uses: garygrossgarten/github-action-ssh@v0.6.3
       with:
-        command: sudo systemctl restart dotnetapp.service
+        command: ls -l
         host: ${{ secrets.HOST }}
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.PASSWORD }}
